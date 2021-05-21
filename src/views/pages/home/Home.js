@@ -1,6 +1,5 @@
 import { api, postform } from "../../../service/api";
 
-
 async function getRandomJoke() {
   const request = await api.get("random");
   const response = request.data;
@@ -14,21 +13,40 @@ let Home = {
     const jokes = await getRandomJoke();
 
     let view = /*html*/ `
-          <div>
-            <h1>Primeira página</h1>
-            <img src=${jokes.icon_url} alt=${jokes.value} />
-            <p>${jokes.value}</p>
+      <div class="container">
+      <header>
+          <div class="header_inner">
+              <a href="https://github.com/jrsmarcilio/afya-turma2" target="_blank">
+                  <div class="logo">
+                      <span class="logo_mark">></span>
+                      <span class="logo_text">/jrsmarcilio</span>
+                      <span class="logo_cursor"></span>
+                  </div>
+              </a>
+              <a href="https://www.linkedin.com/in/jrsmarcilio/" target="_blank">
+                <span class="sociais">LinkedIn</span>
+              </a>
+              <a href="https://github.com/jrsmarcilio/" target="_blank">
+                <span class="sociais">Github</span>
+              </a>
           </div>
-          <hr />
-          <div class="formcontainer">
-            <form id="form">
+      </header>
+      <div class="container-chuck">
+          <h1>Chuck Norris ❤</h1>
+          <div class="chuck"></div>
+          <p>${jokes.value}</p>
+      </div>
+      <hr />
+      <div class="formcontainer">
+          <form id="form">
               <input type="text" id="name" placeholder="name" />
               <input type="text" id="email" placeholder="email" />
               <input type="text" id="phone" placeholder="phone" />
               <input type="submit" value="Enviar" />
-            </form>
-          </div>
-      `;
+          </form>
+      </div>
+    </div>
+    `;
 
     return view;
   },
